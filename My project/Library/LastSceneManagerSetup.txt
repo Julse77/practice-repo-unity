@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/Character_Practice.unity
+- path: Assets/Scenes/Charactor_Move.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

@@ -345,6 +345,7 @@
 "Assets/AnimatorController/PlayerController1D.cs"
 "Assets/CharacterMove/CameraMove.cs"
 "Assets/CharacterMove/CharacterMove.cs"
+"Assets/CharacterMove/MovingObj.cs"
 "Assets/unity-chan!/Unity-chan! Model/Scripts/AutoBlink.cs"
 "Assets/unity-chan!/Unity-chan! Model/Scripts/CameraController.cs"
 "Assets/unity-chan!/Unity-chan! Model/Scripts/FaceUpdate.cs"

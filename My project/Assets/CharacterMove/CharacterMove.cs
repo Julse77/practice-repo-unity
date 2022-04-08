@@ -8,6 +8,7 @@ public class CharacterMove : MonoBehaviour
     public float jumpForce = 5f;        // 점프힘
     private bool isJumping;
     private Rigidbody playerRigidbody;
+    private Vector3 playerPosition;     // 플레이어 위치
 
     void Start()
     {
@@ -18,6 +19,7 @@ public class CharacterMove : MonoBehaviour
     {
         Move();
         Jump();
+        Replace();
     }
 
     void Move()
@@ -30,7 +32,7 @@ public class CharacterMove : MonoBehaviour
 
         Vector3 velocity = new Vector3(horizontalInput, 0, verticalInput);
         velocity *= moveSpeed;
-        velocity.y = fallSpeed;     // 떨어지는 속도 초기화
+        velocity.y = fallSpeed;                             // 떨어지는 속도 초기화
         playerRigidbody.velocity = velocity;
     }
 
@@ -38,10 +40,26 @@ public class CharacterMove : MonoBehaviour
     {
         if (Input.GetKeyDown("space"))
         {
-            Debug.Log("점프");
+            // 리지드바디에 충격량(점프힘)을 가함
             playerRigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-
+            Debug.Log("점프");
         }
+    }
+
+    void Replace()
+    {
+        playerPosition = this.transform.position;
+
+        // Debug.Log(playerPosition.y);
+
+        if (playerPosition.y < 50f)
+        {
+            // player = GameObject.FindWithTag("Player");
+            // player.SetActive(false);
+            playerPosition = new Vector3(1f, 3f, 1f);
+            // player.SetActive(true);
+        }
+
     }
 
 

@@ -8,7 +8,7 @@ public class CharacterMove : MonoBehaviour
     public float jumpForce = 5f;        // 점프힘
     private bool isJumping;
     private Rigidbody playerRigidbody;
-    private Vector3 playerPosition;     // 플레이어 위치
+    Vector3 playerPosition;             // 플레이어 위치
 
     void Start()
     {
@@ -49,9 +49,7 @@ public class CharacterMove : MonoBehaviour
     void Replace()
     {
         playerPosition = this.transform.position;
-
-        // Debug.Log(playerPosition.y);
-
+        
         if (playerPosition.y < 50f)
         {
             // player = GameObject.FindWithTag("Player");

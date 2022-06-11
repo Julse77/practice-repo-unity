@@ -1,0 +1,7 @@
+ManifestFileVersion: 0
+CRC: 1882715605
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: ab_ui_practice
+      Dependencies: {}

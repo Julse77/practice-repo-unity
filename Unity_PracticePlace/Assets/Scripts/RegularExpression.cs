@@ -1,59 +1,30 @@
 using System.Text.RegularExpressions;
 using System;
-
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
-public class RegularExpressions : MonoBehaviour
+public class RegularExpression : MonoBehaviour
 {
-    // 정규표현식 테스트
+    // Test Script for RegularExpression
+    public TMP_Text DebugCanvasText;            // Return Space
+    public TMP_InputField DebugInputField;      // Input Text. ex) $10,000
 
-    void Start()
+    public void test()
     {
-        test();
-    }
-
-    private void test()
-    {
-        // 숫자만 얻기
-        string example_dollar = "$1,812.99";
-        string example_CaDollar = "CA$10,000.00";
-        string example_won = "₩10,000,000";
-        string example_france = "Fr10,000.00";
-
         double money = 0;
+        string inputMoney = DebugInputField.text;
 
-        char isWon = '0';
-        string inputMoney = example_won;
+        string pattern = @"[^\D]";  // Pattern of Remove Number
 
-        string pattern = @"[^\D]";  // 숫자 제거 패턴
-        string asdf = Regex.Replace(inputMoney, pattern, "");
-        asdf = asdf.Replace(",", "").Replace(".", "");  // , . 제거
-        Debug.Log(asdf);    // 리턴값 : 통화
+        string currency = Regex.Replace(inputMoney, pattern, "");
+        currency = currency.Replace(",", "").Replace(".", "");  // , . 제거
 
-        money = double.Parse(inputMoney.Replace(asdf, "").Replace(",", ""));
+        money = double.Parse(inputMoney.Replace(currency, "").Replace(",", ""));
         money = Convert.ToInt32(Math.Ceiling(money));
-        Debug.Log(money);
 
-        if (asdf == "₩")
-        {
-            isWon = '₩';
-        }
-        else
-        {
-            isWon = '$';
-        }
-        Debug.Log(isWon);
+        string serverIAPLog = $"Return Currency : {currency}, Money : {money}";
 
-        string serverIAPLog = $"~IAP LOG~\nexample_dollar = {example_dollar}\nexample_CaDollar = {example_CaDollar}\nexample_won = {example_won}\nexample_france = {example_france}";
-
-        Debug.Log(serverIAPLog);
-
-        // 특수문자를 제외하고 리턴
-        //pattern = @"\W"; //@"[^0-9]"
-        //asdf = Regex.Replace(example_dollar, pattern, "");
-        //Debug.Log(asdf);
+        DebugCanvasText.text = serverIAPLog;
     }
 
 }
